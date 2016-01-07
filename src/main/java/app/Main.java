@@ -21,9 +21,8 @@ public class Main {
         PersonDao dao = new PersonDaoImpl();
         dao.createTable(); //テーブルの準備
 
-        //最初は id に null を渡してインスタンス化！
-        //きもちわるい。。。
-        Person entity = new Person(null, "うらがみ", 31);
+        //最初は id を渡さないコンストラクタでインスタンス化する。
+        Person entity = new Person("うらがみ", 31);
         System.out.printf("A: %s%n", entity);
 
         //insert すると id が付与されたエンティティが返ってくる。

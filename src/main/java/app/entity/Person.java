@@ -26,6 +26,14 @@ public class Person {
         this.age = age;
     }
 
+    //id にnullを渡すコンストラクタ。
+    //insertすると id に値が付与された新しいエンティティインスタンスが
+    //返されるので null を設定しておいて良い。
+    //(というか、設定せざるを得ない)
+    public Person(String name, Integer age) {
+        this(null, name, age);
+    }
+
     @Override
     public String toString() {
         return String.format("%s: %s(%s)", Objects.toString(id, "*"), name,
