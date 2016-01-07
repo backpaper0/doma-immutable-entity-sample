@@ -30,8 +30,9 @@ public class Main {
         entity = inserted.getEntity();
         System.out.printf("B: %s%n", entity);
 
-        //値を変更するときは id を渡すコンストラクタを利用する。
-        entity = new Person(entity.id, "たいち", entity.age + 1);
+        //値を変更するときは id を渡すコンストラクタの代わりに
+        //定義した、変更用メソッドを呼ぶ。
+        entity = entity.update("たいち", entity.age + 1);
         System.out.printf("C: %s%n", entity);
 
         Result<Person> updated = dao.update(entity);

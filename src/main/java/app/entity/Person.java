@@ -20,7 +20,10 @@ public class Person {
 
     //id を受け取るコンストラクタ。
     //これが無いとDomaちゃんに怒られる。
-    public Person(Integer id, String name, Integer age) {
+    //
+    //非privateであれば良いのでpackage privateにするのもひとつの手。
+    //これで意図せず呼び出される事はなくなる。
+    Person(Integer id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -32,6 +35,13 @@ public class Person {
     //(というか、設定せざるを得ない)
     public Person(String name, Integer age) {
         this(null, name, age);
+    }
+
+    //id を受け取るコンストラクタをpackage privateにしたので
+    //他packageのクラスからエンティティインスタンスの変更ができなくなった。
+    //なので、このような変更用メソッドを定義しておく。
+    public Person update(String name, Integer age) {
+        return new Person(this.id, name, age);
     }
 
     @Override
